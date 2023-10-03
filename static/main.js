@@ -88,3 +88,16 @@ fetch('https://v1.hitokoto.cn')
       hitokoto.innerText = data.hitokoto
     })
     .catch(console.error)
+
+function refresh_yiyan(){
+  ref_button = '<a href="javascript:refresh_yiyan();" aria-hidden="true"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i></i></a>'
+if (Math.floor(Math.random()*10)>=2) {
+  $.get("https://el-bot-api.vercel.app/api/words/young", function (data) {
+    $("#yiyan").html(data[0]+ref_button);
+  });
+} else {
+  $.get("https://el-bot-api.vercel.app/api/words/aoligei", function (data) {
+    $("#yiyan").html(data[0]+ref_button);
+  });
+}}
+refresh_yiyan();
