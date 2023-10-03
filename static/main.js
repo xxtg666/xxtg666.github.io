@@ -52,52 +52,48 @@ if(meting_music_api===""){
 var meting_api =
   "https://api.mizore.cn/meting/api.php?server=:server&type=:type&id=:id";
 
-$.ajax({
-//   url: "https://api.mizore.cn/meting/api.php?server=netease&type=playlist&id=20173709",
-  url: meting_music_api,
-  data:{
-    server: music_server,
-    type: music_type,
-    id: music_id
-  },
-  dataType: "json",
-  success: function (audio) {
-    const ap = new APlayer({
-        container: music_fixed === false ? document.getElementById('aplayer-inner') : document.getElementById('aplayer-fixed') ,
-        audio: audio,
-        fixed: music_fixed === false ? false : true,
-        autoplay: music_autoplay,
-        order: music_order,
-        listFolded :true,
-        volum: music_volume,
-        mini: music_fixed === true ? true:music_mini,
-        lrcType: 3,
-        preload:"auto",
-        loop: music_loop
+// $.ajax({
+// //   url: "https://api.mizore.cn/meting/api.php?server=netease&type=playlist&id=20173709",
+//   url: meting_music_api,
+//   data:{
+//     server: music_server,
+//     type: music_type,
+//     id: music_id
+//   },
+//   dataType: "json",
+//   success: function (audio) {
+//     const ap = new APlayer({
+//         container: music_fixed === false ? document.getElementById('aplayer-inner') : document.getElementById('aplayer-fixed') ,
+//         audio: audio,
+//         fixed: music_fixed === false ? false : true,
+//         autoplay: music_autoplay,
+//         order: music_order,
+//         listFolded :true,
+//         volum: music_volume,
+//         mini: music_fixed === true ? true:music_mini,
+//         lrcType: 3,
+//         preload:"auto",
+//         loop: music_loop
 
         
-    });
-  },
-});
-
-fetch('https://v1.hitokoto.cn')
-    .then(response => response.json())
-    .then(data => {
-      const hitokoto = document.getElementById('hitokoto_text')
-      hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
-      hitokoto.innerText = data.hitokoto
-    })
-    .catch(console.error)
+//     });
+//   },
+// });
 
 function refresh_yiyan(){
-  ref_button = '<a href="javascript:refresh_yiyan();" aria-hidden="true"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i></i></a>'
-if (Math.floor(Math.random()*10)>=2) {
+  ref_button = '<a href="javascript:refresh_yiyan();" aria-hidden="true"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i></i></a>';
+  o_random = Math.floor(Math.random()*10);
+  if (o_random>=7) {
   $.get("https://el-bot-api.vercel.app/api/words/young", function (data) {
     $("#yiyan").html(data[0]+ref_button);
   });
-} else {
+} else if (o_random>=6) {
   $.get("https://el-bot-api.vercel.app/api/words/aoligei", function (data) {
     $("#yiyan").html(data[0]+ref_button);
   });
-}}
+} else {
+  $.get("https://v1.hitokoto.cn/", function (data) {
+    $("#yiyan").html(data["hitokoto"]+ref_button);
+  });
+} }
 refresh_yiyan();
