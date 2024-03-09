@@ -45,50 +45,16 @@ console.log(
     "color: #fff; background: #fd79a8; padding:5px 0;",
     "background: #FFF; padding:5px 0;"
   );
-// 兼容旧版
-if(meting_music_api===""){
-    meting_api = "https://api.mizore.cn/meting/api.php";
-}
-var meting_api =
-  "https://api.mizore.cn/meting/api.php?server=:server&type=:type&id=:id";
-
-// $.ajax({
-// //   url: "https://api.mizore.cn/meting/api.php?server=netease&type=playlist&id=20173709",
-//   url: meting_music_api,
-//   data:{
-//     server: music_server,
-//     type: music_type,
-//     id: music_id
-//   },
-//   dataType: "json",
-//   success: function (audio) {
-//     const ap = new APlayer({
-//         container: music_fixed === false ? document.getElementById('aplayer-inner') : document.getElementById('aplayer-fixed') ,
-//         audio: audio,
-//         fixed: music_fixed === false ? false : true,
-//         autoplay: music_autoplay,
-//         order: music_order,
-//         listFolded :true,
-//         volum: music_volume,
-//         mini: music_fixed === true ? true:music_mini,
-//         lrcType: 3,
-//         preload:"auto",
-//         loop: music_loop
-
-        
-//     });
-//   },
-// });
 
 function refresh_yiyan(){
   ref_button = '<a href="javascript:refresh_yiyan();" aria-hidden="true"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i></i></a>';
   o_random = Math.floor(Math.random()*10);
   if (o_random>=7) {
-  $.get("https://el-bot-api.vercel.app/api/words/young", function (data) {
+  $.get("https://el-bot-api.xxtg666.top/api/words/young", function (data) {
     $("#yiyan").html(data[0]+ref_button);
   });
 } else if (o_random>=6) {
-  $.get("https://el-bot-api.vercel.app/api/words/aoligei", function (data) {
+  $.get("https://el-bot-api.xxtg666.top/api/words/aoligei", function (data) {
     $("#yiyan").html(data[0]+ref_button);
   });
 } else {
